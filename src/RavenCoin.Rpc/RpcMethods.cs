@@ -117,9 +117,11 @@ namespace RavenCoin.Rpc
 
         //== Wallet ==
         abandontransaction,
+        abortrescan,
         addmultisigaddress,
         addwitnessaddress,
         backupwallet,
+        bumpfee,
         dumpprivkey,
         dumpwallet,
         getaccount,
@@ -163,12 +165,6 @@ namespace RavenCoin.Rpc
         signmessage,
         walletlock,
         walletpassphrase,
-        walletpassphrasechange,
-        //2018-01-20: added Dash privatesend mixing support
-        privatesend,
-        //2018-03-02: added getaddressbalance (needs addressindex = 1 in dash.conf)
-        getaddressbalance,
-        //2018-07-23: Masternode support, usually list command is used
-        masternode
+        walletpassphrasechange
     }
 }

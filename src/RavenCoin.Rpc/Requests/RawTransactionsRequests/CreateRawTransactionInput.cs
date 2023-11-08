@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RavenCoin.Rpc.Requests.RawTransactions
 {
     public class CreateRawTransactionInput
     {
-        //[JsonProperty("txid")]
+        [JsonPropertyName("txid")]
         public string TxId { get; set; }
 
-        //[JsonProperty("vout")]
+        [JsonPropertyName("vout")]
         public int Vout { get; set; }
     }
 }
