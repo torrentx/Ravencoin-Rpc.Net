@@ -12,21 +12,22 @@ namespace RavenCoin.Rpc.Requests
     {
         public JsonRpcRequest() 
         {
+            Id = 1;
             Method = RpcMethods.unknown.ToString();
             Parameters = new List<object>();
         }
-        public JsonRpcRequest(int id, string method, params object[] parameters)
+        public JsonRpcRequest(int id, string method)
         {
             Id = id;
             Method = method;
-            Parameters = parameters?.ToList() ?? new List<object>();
+            Parameters = new List<object>();
         }
 
         [JsonPropertyName("method")]
         public string Method { get; set; }
 
         [JsonPropertyName("params")]
-        public IList<object>? Parameters { get; set; }
+        public List<object> Parameters { get; set; }
 
         /// <summary>
         /// [JsonProperty(PropertyName = "id", Order = 2)]
@@ -41,9 +42,10 @@ namespace RavenCoin.Rpc.Requests
 
         public string JsonString()
         {
+            this.FlushParameters();
             return JsonSerializer.Serialize(this);
         }
 
-        public abstract void FlushParameters();
+        internal abstract void FlushParameters();
     }
 }

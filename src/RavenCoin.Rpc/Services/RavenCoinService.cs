@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RavenCoin.Rpc.Constants;
+using RavenCoin.Rpc.Requests;
 
 namespace RavenCoin.Rpc.Services
 {
@@ -23,17 +25,5 @@ namespace RavenCoin.Rpc.Services
         }
 
         public RavenCoinConstants.Constants Constants => RavenCoinConstants.Constants.Instance;
-
-        //public string SendToAddress(string ravencoinaddress, decimal amount, string comment, string commentTo, bool subtractFeeFromAmount, bool allowReplaceByFee)
-        //{
-        //    return _rpcConnector.MakeRequest<string>(RpcMethods.sendtoaddress, ravencoinaddress, amount, comment, commentTo, subtractFeeFromAmount, allowReplaceByFee);
-        //}
-
-        //public string GetNewAddress(string account = "", string addressType = "")
-        //{
-        //    return string.IsNullOrWhiteSpace(account)
-        //        ? _rpcConnector.MakeRequest<string>(RpcMethods.getnewaddress)
-        //        : _rpcConnector.MakeRequest<string>(RpcMethods.getnewaddress, account, addressType);
-        //}
     }
 }

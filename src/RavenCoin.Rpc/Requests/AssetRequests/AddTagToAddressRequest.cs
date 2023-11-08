@@ -13,6 +13,7 @@ namespace RavenCoin.Rpc.Requests.AssetRequests
         {
             Id = 1;
             Method = RpcMethods.addtagtoaddress.ToString();
+            Parameters = new List<object>();
         }
         [JsonPropertyName("tag_name")]
         string? TagName { get; set; }
@@ -23,7 +24,7 @@ namespace RavenCoin.Rpc.Requests.AssetRequests
         [JsonPropertyName("asset_data")]
         string? AssetData { get; set; }
 
-        public override void FlushParameters()
+        internal override void FlushParameters()
         {
             Parameters = new List<object>();
             if (TagName != null)

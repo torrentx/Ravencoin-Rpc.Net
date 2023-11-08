@@ -2,6 +2,7 @@
 using RavenCoin.Rpc.Requests;
 using RavenCoin.Rpc.Responses;
 using RavenCoin.Rpc.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,6 @@ namespace RavenCoin.Rpc.Connectors
 
         public T MakeRequest<T>(JsonRpcRequest request)//(RpcMethods rpcMethod, params object[] parameters)
         {
-            request.FlushParameters();
             using HttpClient client = new();
             if (_coinService.Parameters.SelectedDaemonUrl == null)
             {
@@ -125,17 +125,9 @@ namespace RavenCoin.Rpc.Connectors
             {
                 throw new RpcException("Unable to connect to the server", protocolViolationException);
             }
-            catch (Exception exception)
+            catch
             {
-                if (request.Parameters != null)
-                {
-                    var queryParameters = request.Parameters.Cast<string>().Aggregate(string.Empty, (current, parameter) => current + (parameter + " "));
-                    throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {request.Method} with parameters: {queryParameters}. \nException: {exception.Message}");
-                }
-                else
-                {
-                    throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {request.Method} with parameters: <UNKNOWN>");
-                }
+                throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {request.Method} with parameters: <UNKNOWN>");
             }
         }
 

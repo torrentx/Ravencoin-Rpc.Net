@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RavenCoin.Rpc
+namespace RavenCoin.Rpc.Constants
 {
     public abstract class CoinConstants<T> where T : CoinConstants<T>, new()
     {

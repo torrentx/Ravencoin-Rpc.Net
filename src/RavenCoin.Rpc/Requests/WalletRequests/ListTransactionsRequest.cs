@@ -1,4 +1,5 @@
 ﻿using System.Security.Principal;
+using System.Text.Json.Serialization;
 
 namespace RavenCoin.Rpc.Requests.WalletRequests
 {
@@ -16,9 +17,10 @@ namespace RavenCoin.Rpc.Requests.WalletRequests
             Count = count;
             From = from;
             IncludeWatchonly = includeWatchonly;
+            Parameters = new List<object>();
         }
 
-        public override void FlushParameters()
+        internal override void FlushParameters()
         {
             this.Parameters = new List<object> {
                 Account,

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RavenCoin.Rpc.Services;
 
-namespace RavenCoin.Rpc
+namespace RavenCoin.Rpc.Constants
 {
-    public interface IRavenCoinService : ICoinService, IRavenCoinConstants
+    public interface IRavenCoinConstants
     {
+        RavenCoinConstants.Constants Constants { get; }
     }
 }

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RavenCoin.Rpc.Constants;
 using RavenCoin.Rpc.Services;
 
 namespace RavenCoin.Rpc

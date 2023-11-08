@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RavenCoin.Rpc.Requests.RawTransactions
@@ -14,6 +16,7 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
             Method = RpcMethods.createrawtransaction.ToString();
             Inputs = new List<CreateRawTransactionInput>();
             Outputs = new Dictionary<string,decimal>();
+            Parameters = new List<object>();
         }
 
         public CreateRawTransactionRequest(IList<CreateRawTransactionInput> inputs, Dictionary<string,decimal> outputs) : this()
@@ -22,11 +25,11 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
             Method = RpcMethods.createrawtransaction.ToString();
             Inputs = inputs;
             Outputs = outputs;
+            Parameters = new List<object>();
         }
 
         public IList<CreateRawTransactionInput> Inputs { get; }
         public Dictionary<string,decimal> Outputs { get; }
-
         public void AddInput(CreateRawTransactionInput input)
         {
             Inputs.Add(input);
@@ -73,7 +76,7 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
             return Outputs.Contains<KeyValuePair<string, decimal>>(outputToBeRemoved) && Outputs.Remove(outputToBeRemoved.Key);
         }
 
-        public override void FlushParameters()
+        internal override void FlushParameters()
         {
             Parameters = new List<object>
             {

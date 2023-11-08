@@ -1,6 +1,9 @@
-﻿namespace RavenCoin.Rpc.Services
+﻿using RavenCoin.Rpc.Requests;
+
+namespace RavenCoin.Rpc.Services
 {
-    public interface ICoinService : IRpcService, IRpcExtenderService, ICoinParameters, IRpcAssets, IWalletService,IRawTransactionService
+    public interface ICoinService : ICoinParameters
     {
+        public T MakeRequest<T>(JsonRpcRequest request) where T : class;
     }
 }
