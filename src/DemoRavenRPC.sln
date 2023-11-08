@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoRavenRPC", "DemoRavenRPC\DemoRavenRPC.csproj", "{59B22E94-0482-4733-B80D-5A55226A8FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenCoin.Rpc", "RavenCoin.Rpc\RavenCoin.Rpc.csproj", "{B33FC458-6340-42E0-BEFB-C82613679EE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59B22E94-0482-4733-B80D-5A55226A8FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B22E94-0482-4733-B80D-5A55226A8FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B22E94-0482-4733-B80D-5A55226A8FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B22E94-0482-4733-B80D-5A55226A8FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B33FC458-6340-42E0-BEFB-C82613679EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B33FC458-6340-42E0-BEFB-C82613679EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B33FC458-6340-42E0-BEFB-C82613679EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B33FC458-6340-42E0-BEFB-C82613679EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60C7B5B9-FA19-40D2-A477-FEE76DB6E332}
+	EndGlobalSection
+EndGlobal
