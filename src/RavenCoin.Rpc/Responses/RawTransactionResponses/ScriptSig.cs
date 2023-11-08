@@ -8,7 +8,7 @@ namespace RavenCoin.Rpc.Responses.RawTransactions
 {
     public class ScriptSig
     {
-        public string Asm { get; set; }
-        public string Hex { get; set; }
+        public string? Asm { get; set; }
+        public string? Hex { get; set; }
     }
 }

@@ -55,7 +55,7 @@ namespace RavenCoin.Rpc.Responses.WalletResponses
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append($"Account: {Account}");
             sb.Append(Environment.NewLine);
             sb.Append($"Address: {Address}");

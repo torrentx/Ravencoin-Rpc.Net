@@ -10,7 +10,7 @@ namespace DemoRavenRPC
     internal class Program
     {
         private static readonly ICoinService ravenCoinService = new RavenCoinService();
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Begin Testing Assets . . . ");
             Console.WriteLine();
@@ -34,11 +34,13 @@ namespace DemoRavenRPC
             Console.WriteLine();
             Console.WriteLine("Begin Testing Raw Transactions . . . ");
             Console.WriteLine();
-            CreateRawTransactionRequest createRawTransactionRequest = new CreateRawTransactionRequest();
-            CreateRawTransactionInput input = new CreateRawTransactionInput();
-            input.TxId = "68869bb60f8ee67bab8d004f67c5691a2fd87ba3b916ba6a8493a18d48934ac0";
-            input.Vout = 0;
-            KeyValuePair<string, decimal> output = new KeyValuePair<string, decimal>("mpFceQeEMBy5bYkeBMDo5qT2Cq7pGN13nk", 100);
+            CreateRawTransactionRequest createRawTransactionRequest = new();
+            CreateRawTransactionInput input = new()
+            {
+                TxId = "68869bb60f8ee67bab8d004f67c5691a2fd87ba3b916ba6a8493a18d48934ac0",
+                Vout = 0
+            };
+            KeyValuePair<string, decimal> output = new("mpFceQeEMBy5bYkeBMDo5qT2Cq7pGN13nk", 100);
             createRawTransactionRequest.AddInput(input);
             createRawTransactionRequest.AddOutput(output);
             var CreateRawTransactionResponse = ravenCoinService.CreateRawTransaction(createRawTransactionRequest);

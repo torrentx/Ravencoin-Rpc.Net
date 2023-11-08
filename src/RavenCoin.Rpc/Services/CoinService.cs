@@ -190,13 +190,13 @@ namespace RavenCoin.Rpc.Services
 
         public ListAssetResponse ListMyAssets()
         {
-            ListMyAssetsRequest request = new ListMyAssetsRequest();
+            ListMyAssetsRequest request = new();
             return _rpcConnector.MakeRequest<ListAssetResponse>(request);
         }
 
         public GetBlockCountResponse GetBlockCount()
         {
-            GetBlockCountRequest request = new GetBlockCountRequest();
+            GetBlockCountRequest request = new();
             return _rpcConnector.MakeRequest<GetBlockCountResponse>(request);
         }
 

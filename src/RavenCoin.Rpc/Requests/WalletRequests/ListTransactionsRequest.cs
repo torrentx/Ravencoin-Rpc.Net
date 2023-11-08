@@ -2,7 +2,7 @@
 
 namespace RavenCoin.Rpc.Requests.WalletRequests
 {
-    public  class ListTransactionsRequest : JsonRpcRequest
+    public class ListTransactionsRequest : JsonRpcRequest
     {
         public string Account { get; set; }
         public int Count { get; set; }
@@ -20,11 +20,12 @@ namespace RavenCoin.Rpc.Requests.WalletRequests
 
         public override void FlushParameters()
         {
-            this.Parameters = new List<object>();
-            this.Parameters.Add(Account);
-            this.Parameters.Add(Count);
-            this.Parameters.Add(From);
-            this.Parameters.Add(IncludeWatchonly);
+            this.Parameters = new List<object> {
+                Account,
+                Count,
+                From,
+                IncludeWatchonly
+            };
 
         }
     }

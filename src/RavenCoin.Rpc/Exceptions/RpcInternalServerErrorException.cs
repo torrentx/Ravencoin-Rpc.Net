@@ -28,7 +28,7 @@ namespace RavenCoin.Rpc.Exceptions
         {
             if (info == null)
             {
-                throw new ArgumentNullException("info");
+                throw new ArgumentNullException(nameof(info));
             }
 
             info.AddValue("RpcErrorCode", RpcErrorCode, typeof(RpcErrorCode));

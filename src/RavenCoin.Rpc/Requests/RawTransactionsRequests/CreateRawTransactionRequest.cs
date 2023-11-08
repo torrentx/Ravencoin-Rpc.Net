@@ -37,7 +37,7 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
             Outputs.Add(output.Key, output.Value);
         }
 
-        public void AddInput(string txId, int vout)
+        public void AddInput(string? txId, int vout)
         {
             Inputs.Add(new CreateRawTransactionInput
             {
@@ -61,7 +61,7 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
             return RemoveOutput(output.Key, output.Value);
         }
 
-        public bool RemoveInput(string txId, int vout)
+        public bool RemoveInput(string? txId, int vout)
         {
             var input = Inputs.FirstOrDefault(x => x.TxId == txId && x.Vout == vout);
             return input != null && Inputs.Remove(input);
@@ -75,9 +75,11 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
 
         public override void FlushParameters()
         {
-            Parameters = new List<object>();
-            Parameters.Add(Inputs);
-            Parameters.Add(Outputs);
+            Parameters = new List<object>
+            {
+                Inputs,
+                Outputs
+            };
         }
     }
 }

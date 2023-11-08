@@ -14,10 +14,10 @@ namespace RavenCoin.Rpc
         #region Constructor
 
         public CoinParameters(ICoinService coinService,
-            string daemonUrl,
-            string rpcUsername,
-            string rpcPassword,
-            string walletPassword,
+            string? daemonUrl,
+            string? rpcUsername,
+            string? rpcPassword,
+            string? walletPassword,
             short rpcRequestTimeoutInSeconds)
         {
             if (!string.IsNullOrWhiteSpace(daemonUrl))
@@ -36,9 +36,8 @@ namespace RavenCoin.Rpc
             }
             else
             {
-                short rpcRequestTimeoutTryParse = 0;
 
-                if (short.TryParse(ConfigurationManager.AppSettings.Get("RpcRequestTimeoutInSeconds"), out rpcRequestTimeoutTryParse))
+                if (short.TryParse(ConfigurationManager.AppSettings.Get("RpcRequestTimeoutInSeconds"), out short rpcRequestTimeoutTryParse))
                 {
                     RpcRequestTimeoutInSeconds = rpcRequestTimeoutTryParse;
                 }

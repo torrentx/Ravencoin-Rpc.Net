@@ -11,7 +11,7 @@ namespace RavenCoin.Rpc.Requests.RawTransactions
     public class CreateRawTransactionInput
     {
         [JsonPropertyName("txid")]
-        public string TxId { get; set; }
+        public string? TxId { get; set; }
 
         [JsonPropertyName("vout")]
         public int Vout { get; set; }

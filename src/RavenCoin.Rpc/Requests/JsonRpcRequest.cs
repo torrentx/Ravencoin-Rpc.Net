@@ -12,8 +12,8 @@ namespace RavenCoin.Rpc.Requests
     {
         public JsonRpcRequest() 
         {
-            Parameters = new List<object>();
             Method = RpcMethods.unknown.ToString();
+            Parameters = new List<object>();
         }
         public JsonRpcRequest(int id, string method, params object[] parameters)
         {
@@ -26,7 +26,7 @@ namespace RavenCoin.Rpc.Requests
         public string Method { get; set; }
 
         [JsonPropertyName("params")]
-        public IList<object> Parameters { get; set; }
+        public IList<object>? Parameters { get; set; }
 
         /// <summary>
         /// [JsonProperty(PropertyName = "id", Order = 2)]

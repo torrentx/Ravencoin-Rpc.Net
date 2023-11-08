@@ -14,7 +14,7 @@ namespace RavenCoin.Rpc.Services
     {
         public ListTransactionsResponse ListTransactions(string account, int count, int from, bool? includeWatchonly)
         {
-            ListTransactionsRequest request = new ListTransactionsRequest(account, count, from, includeWatchonly??false);
+            ListTransactionsRequest request = new(account, count, from, includeWatchonly??false);
             return _rpcConnector.MakeRequest<ListTransactionsResponse>(request);
                 //: _rpcConnector.MakeRequest<List<ListTransactionsResponse>>(RpcMethods.listtransactions, (string.IsNullOrWhiteSpace(account) ? "*" : account), count, from, includeWatchonly);
         }
