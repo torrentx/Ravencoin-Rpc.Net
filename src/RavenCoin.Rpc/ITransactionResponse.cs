@@ -8,6 +8,6 @@ namespace RavenCoin.Rpc
 {
     public interface ITransactionResponse
     {
-        string TxId { get; set; }
+        string? TxId { get; set; }
     }
 }

@@ -119,15 +119,15 @@ namespace RavenCoin.Rpc
 
         #endregion
 
-        public string BaseUnitName { get; set; }
+        public string? BaseUnitName { get; set; }
         public uint BaseUnitsPerCoin { get; set; }
         public int BlocksHighestPriorityTransactionsReservedSizeInBytes { get; set; }
         public int BlockMaximumSizeInBytes { get; set; }
-        public string CoinShortName { get; set; }
-        public string CoinLongName { get; set; }
+        public string? CoinShortName { get; set; }
+        public string? CoinLongName { get; set; }
         public decimal CoinsPerBaseUnit { get; set; }
-        public string DaemonUrl { private get; set; }
-        public string DaemonUrlTestnet { private get; set; }
+        public string? DaemonUrl { private get; set; }
+        public string? DaemonUrlTestnet { private get; set; }
         public double EstimatedBlockGenerationTimeInMinutes { get; set; }
         public int ExpectedNumberOfBlocksGeneratedPerDay => (int)EstimatedBlockGenerationTimeInMinutes * GlobalConstants.MinutesInADay;
         public decimal FeePerThousandBytesInCoins { get; set; }
@@ -135,20 +135,20 @@ namespace RavenCoin.Rpc
         public decimal FreeTransactionMinimumOutputAmountInCoins { get; set; }
         public int FreeTransactionMinimumPriority { get; set; }
         public bool IgnoreConfigFiles { get; }
-        public string IsoCurrencyCode { get; set; }
+        public string? IsoCurrencyCode { get; set; }
         public decimal MinimumNonDustTransactionAmountInCoins { get; set; }
         public decimal MinimumTransactionFeeInCoins { get; set; }
         public decimal OneBaseUnitInCoins => CoinsPerBaseUnit;
         public uint OneCoinInBaseUnits => BaseUnitsPerCoin;
-        public string RpcPassword { get; set; }
+        public string? RpcPassword { get; set; }
         public short RpcRequestTimeoutInSeconds { get; set; }
-        public string RpcUsername { get; set; }
-        public string SelectedDaemonUrl => !UseTestnet ? DaemonUrl : DaemonUrlTestnet;
+        public string? RpcUsername { get; set; }
+        public string? SelectedDaemonUrl => !UseTestnet ? DaemonUrl : DaemonUrlTestnet;
         public ulong TotalCoinSupplyInCoins { get; set; }
         public int TransactionSizeBytesContributedByEachInput { get; set; }
         public int TransactionSizeBytesContributedByEachOutput { get; set; }
         public int TransactionSizeFixedExtraSizeInBytes { get; set; }
         public bool UseTestnet { get; set; }
-        public string WalletPassword { get; set; }
+        public string? WalletPassword { get; set; }
     }
 }

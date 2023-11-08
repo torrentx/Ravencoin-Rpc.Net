@@ -10,7 +10,11 @@ namespace RavenCoin.Rpc.Requests
 {
     public abstract class JsonRpcRequest
     {
-        public JsonRpcRequest() { }
+        public JsonRpcRequest() 
+        {
+            Parameters = new List<object>();
+            Method = RpcMethods.unknown.ToString();
+        }
         public JsonRpcRequest(int id, string method, params object[] parameters)
         {
             Id = id;

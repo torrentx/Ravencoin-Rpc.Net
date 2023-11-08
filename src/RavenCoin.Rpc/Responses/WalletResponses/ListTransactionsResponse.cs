@@ -9,21 +9,23 @@ namespace RavenCoin.Rpc.Responses.WalletResponses
 {
     public class ListTransactionsResponse : JsonRpcResponse
     {
+        public ListTransactionsResponse(string id, JsonRpcError error) : base(id, error){ }
+        
         [JsonPropertyName("result")]
-        public List<ListTransactionsResponseResult> Results { get; set; }
+        public List<ListTransactionsResponseResult>? Results { get; set; }
     }
     public class ListTransactionsResponseResult
     {
         [JsonPropertyName("account")]
-        public string Account { get; set; }
+        public string? Account { get; set; }
         [JsonPropertyName("address")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [JsonPropertyName("category")]
-        public string Category { get; set; }
+        public string? Category { get; set; }
         [JsonPropertyName("amount")]
         public decimal Amount { get; set; }
         [JsonPropertyName("label")]
-        public string Label { get; set; }
+        public string? Label { get; set; }
         [JsonPropertyName("vout")]
         public int Vout { get; set; }
         [JsonPropertyName("fee")]
@@ -31,23 +33,23 @@ namespace RavenCoin.Rpc.Responses.WalletResponses
         [JsonPropertyName("confirmations")]
         public int Confirmations { get; set; }
         [JsonPropertyName("blockhash")]
-        public string BlockHash { get; set; }
+        public string? BlockHash { get; set; }
         [JsonPropertyName("blockindex")]
         public double BlockIndex { get; set; }
         [JsonPropertyName("blocktime")]
         public double BlockTime { get; set; }
         [JsonPropertyName("txid")]
-        public string TxId { get; set; }
+        public string? TxId { get; set; }
         [JsonPropertyName("walletconflicts")]
-        public List<string> WalletConflicts { get; set; }
+        public List<string>? WalletConflicts { get; set; }
         [JsonPropertyName("time")]
         public double Time { get; set; }
         [JsonPropertyName("timereceived")]
         public double TimeReceived { get; set; }
         [JsonPropertyName("comment")]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
         [JsonPropertyName("otheraccount")]
-        public string OtherAccount { get; set; }
+        public string? OtherAccount { get; set; }
         [JsonPropertyName("involveswatchonly")]
         public bool InvolvesWatchonly { get; set; }
 

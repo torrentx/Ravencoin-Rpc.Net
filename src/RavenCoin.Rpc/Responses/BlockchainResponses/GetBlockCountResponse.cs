@@ -9,6 +9,7 @@ namespace RavenCoin.Rpc.Responses.BlockchainResponses
 {
     public class GetBlockCountResponse : JsonRpcResponse
     {
+        public GetBlockCountResponse(string id, JsonRpcError error) : base(id, error) { }
         [JsonPropertyName("result")]
         public uint Result { get; set; }
     }

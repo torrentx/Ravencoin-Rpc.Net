@@ -50,9 +50,16 @@ namespace DemoRavenRPC
             Console.WriteLine("Begin Testing Wallet . . . ");
             Console.WriteLine("Testing List Transactions: ");
             var ListTransactionsResponse = ravenCoinService.ListTransactions("*", 100, 0, true);
-            foreach(var result in ListTransactionsResponse.Results)
+            if (ListTransactionsResponse.Results != null)
             {
-                Console.WriteLine(result);
+                foreach (var result in ListTransactionsResponse.Results)
+                {
+                    Console.WriteLine(result);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Transactions");
             }
 
             Console.WriteLine();

@@ -9,6 +9,11 @@ namespace RavenCoin.Rpc.Responses.AssetResponses
 {
     public class ListAssetResponse : JsonRpcResponse
     {
+        public ListAssetResponse(string id, JsonRpcError error) : base (id,error)
+        {
+            Result = new Dictionary<string, decimal>();
+        }
+
         [JsonPropertyName("result")]
         public Dictionary<string, decimal> Result { get; set; }
 
@@ -23,7 +28,6 @@ namespace RavenCoin.Rpc.Responses.AssetResponses
 
     public class Asset
     {
-        public Asset() { }
         public Asset(string name, decimal value)
         {
             AssetName = name;

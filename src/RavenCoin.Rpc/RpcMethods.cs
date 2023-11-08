@@ -165,6 +165,9 @@ namespace RavenCoin.Rpc
         signmessage,
         walletlock,
         walletpassphrase,
-        walletpassphrasechange
+        walletpassphrasechange,
+
+        ///== system ==
+        unknown
     }
 }

@@ -26,7 +26,15 @@ namespace RavenCoin.Rpc.Connectors
             request.FlushParameters();
             using (HttpClient client = new HttpClient())
             {
+                if (_coinService.Parameters.SelectedDaemonUrl == null)
+                {
+                    throw new RpcException("Invalid Connection Url");
+                }
                 client.BaseAddress = new Uri(_coinService.Parameters.SelectedDaemonUrl);
+                if (_coinService.Parameters.RpcPassword == null || _coinService.Parameters.RpcUsername == null)
+                {
+                    throw new RpcException("Invalid Username or Password");
+                }
                 client.DefaultRequestHeaders.Add("Authorization", GetBasicAuthHeader(_coinService.Parameters.RpcUsername, _coinService.Parameters.RpcPassword));
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, "");
                 requestMessage.Content = new StringContent(request.JsonString());
@@ -48,8 +56,15 @@ namespace RavenCoin.Rpc.Connectors
                             json = result;
                         }
                     }
-
-                    return JsonSerializer.Deserialize<T>(json);
+                    var toRet = JsonSerializer.Deserialize<T>(json);
+                    if (toRet != null)
+                    {
+                        return toRet;
+                    }
+                    else
+                    {
+                        throw new RpcResponseDeserializationException("Possible Null Return");
+                    }
                 }
                 catch (WebException webException)
                 {
@@ -79,9 +94,9 @@ namespace RavenCoin.Rpc.Connectors
                                             {
                                                 var jsonRpcResponseObject = JsonSerializer.Deserialize<JsonRpcResponse>(result);
 
-                                                var internalServerErrorException = new RpcInternalServerErrorException(jsonRpcResponseObject.Error.Message, webException)
+                                                var internalServerErrorException = new RpcInternalServerErrorException(jsonRpcResponseObject?.Error.Message??"", webException)
                                                 {
-                                                    RpcErrorCode = jsonRpcResponseObject.Error.Code
+                                                    RpcErrorCode = jsonRpcResponseObject?.Error.Code
                                                 };
 
                                                 throw internalServerErrorException;
@@ -122,10 +137,9 @@ namespace RavenCoin.Rpc.Connectors
                 }
                 catch (Exception exception)
                 {
-                    //var queryParameters = jsonRpcRequest.Parameters.Cast<string>().Aggregate(string.Empty, (current, parameter) => current + (parameter + " "));
-                    //throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {jsonRpcRequest.Method} with parameters: {queryParameters}. \nException: {exception.Message}");
+                    var queryParameters = request.Parameters.Cast<string>().Aggregate(string.Empty, (current, parameter) => current + (parameter + " "));
+                    throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {request.Method} with parameters: {queryParameters}. \nException: {exception.Message}");
                 }
-                return default(T);
             }
         }
 

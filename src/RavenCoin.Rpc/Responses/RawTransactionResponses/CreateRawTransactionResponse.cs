@@ -9,9 +9,9 @@ namespace RavenCoin.Rpc.Responses.RawTransactionResponses
 {
     public class CreateRawTransactionResponse : JsonRpcResponse
     {
-        public CreateRawTransactionResponse() { }
+        public CreateRawTransactionResponse(string id, JsonRpcError error) :base (id,error) { }
 
         [JsonPropertyName("result")]
-        public string Result { get; set; }
+        public string? Result { get; set; }
     }
 }
