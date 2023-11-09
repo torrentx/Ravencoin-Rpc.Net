@@ -9,28 +9,25 @@ namespace RavenCoin.Rpc.Requests.AssetRequests
 {
     public class GetAssetDataRequest : JsonRpcRequest
     {
+        /// <summary>
+        /// Returns assets metadata if that asset exists
+        /// </summary>
         public GetAssetDataRequest()
         {
             Id = 1;
             Method = RpcMethods.getassetdata.ToString();
+            AssetName = string.Empty;
         }
 
-        public GetAssetDataRequest(string assetName)
-        {
-            Id = 1;
-            Method = RpcMethods.getassetdata.ToString();
-            AssetName = assetName;
-        }
-
-        public string? AssetName { get; set; }
+        /// <summary>
+        /// The name of the asset
+        /// </summary>
+        public string AssetName { get; set; }
 
         internal override void FlushParameters()
         {
-            Parameters = new List<object>();
-            if (AssetName != null)
-            {
-                Parameters.Add(AssetName);
-            };
+            Parameters.Clear();
+            Parameters.Add(AssetName);
         }
     }
 }

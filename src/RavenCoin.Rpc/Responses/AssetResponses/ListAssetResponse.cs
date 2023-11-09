@@ -21,7 +21,11 @@ namespace RavenCoin.Rpc.Responses.AssetResponses
         {
             get
             {
-                return Result.Select(m => new Asset(m.Key, m.Value)).ToList();
+                if (Result != null && Result.Count > 0)
+                {
+                    return Result.Select(m => new Asset(m.Key, m.Value)).ToList();
+                }
+                return new List<Asset>();
             }
         }
     }

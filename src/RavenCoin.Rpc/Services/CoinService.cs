@@ -44,18 +44,5 @@ namespace RavenCoin.Rpc.Services
         {
             return _rpcConnector.MakeRequest<T>(request);
         }
-
-
-        public ListAssetResponse ListMyAssets()
-        {
-            ListMyAssetsRequest request = new();
-            return _rpcConnector.MakeRequest<ListAssetResponse>(request);
-        }
-
-        public GetBlockCountResponse GetBlockCount()
-        {
-            GetBlockCountRequest request = new();
-            return _rpcConnector.MakeRequest<GetBlockCountResponse>(request);
-        }
     }
 }

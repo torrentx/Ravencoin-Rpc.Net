@@ -22,16 +22,13 @@ namespace DemoRavenRPC
             Console.WriteLine("Begin Testing Assets . . . ");
             Console.WriteLine();
             //AddTagToAddress();
-
-            GetAssetData("PROJECTCC");
-            GetAssetData("PROJECTCC/CRYPTOS");
-
+            GetAssetData("<test>");
             //GetSnapshot,
             //GetVerifierString,
-            //Issue,
+            // IssueAsset(GenerateUniqueAssetName()); // *Expensive to Test
             //IssueQualifierAsset,
             //IssueRestrictedAsset,
-            //IssueUnique,
+            IssueUnique("<test>",GenerateUniqueAssetName(), "");
             //IsValidVerifierString,
             //ListAddressesByAsset,
             //ListAddressesForTag,
@@ -40,10 +37,7 @@ namespace DemoRavenRPC
             //ListAssets,
             //ListAssetsResponse,
             //ListMyAssets,
-
-
             ListMyAssets();
-
             //ListTagsForAddress,
             //PurgeSnapshot,
             //PurgeSnapshotResponse,
@@ -51,8 +45,8 @@ namespace DemoRavenRPC
             //ReissueRestrictedAsset,
             //RemoveTagFromAddress,
 
-            Transfer("PROJECTCC/CRYPTOS", 1.1M, "mpFceQeEMBy5bYkeBMDo5qT2Cq7pGN13nk", "", 0, "mhTZxfbKVKXP3C6K4ZEfgrbbYjBWTx7TeN", "mhTZxfbKVKXP3C6K4ZEfgrbbYjBWTx7TeN");
-            //Transfer,
+            Transfer("PROJECTCC/CRYPTOS", 0.1M, "<address>", "", 0, "<address>", "<address>");
+            
             //TransferFromAddress,
             //TransferFromAddresses,
             //TransferQualifier,
@@ -80,6 +74,41 @@ namespace DemoRavenRPC
             Console.WriteLine();
             Console.WriteLine("Tests Complete!");
             Console.ReadLine();
+        }
+
+        private static string GenerateUniqueAssetName()
+        {
+            Guid guid = Guid.NewGuid();
+            string guidAsName = guid.ToString();
+            string cleanName = guidAsName.Replace("-", string.Empty);
+            string truncatedName = cleanName.Substring(0, 30);
+            return truncatedName.ToUpper();
+        }
+
+        private static void IssueAsset(string assetName)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Testing Issue");
+            IssueRequest request = new IssueRequest();
+            request.AssetName = assetName;
+            IssueResponse response = ravenCoinService.MakeRequest<IssueResponse>(request);
+            Console.Write(response);
+
+            Console.WriteLine();
+        }
+
+        private static void IssueUnique(string baseAsset, string uniqueAsset, string ipfsTag)
+        {
+            uniqueAsset = uniqueAsset.Substring(0, 30-baseAsset.Length);
+            Console.WriteLine();
+            Console.WriteLine("Testing Issue Unique");
+            IssueUniqueRequest request = new IssueUniqueRequest();
+            request.RootName = baseAsset;
+            request.AssetTags.Add(uniqueAsset);
+            request.ToAddress = "<address>";
+            IssueUniqueResponse response = ravenCoinService.MakeRequest<IssueUniqueResponse>(request);
+            Console.Write(response);
+            Console.WriteLine();
         }
 
         private static void Transfer(string assetName, decimal qty, string toAddress, string message, long expireTime, string changeAddress, string assetChangeAddress)

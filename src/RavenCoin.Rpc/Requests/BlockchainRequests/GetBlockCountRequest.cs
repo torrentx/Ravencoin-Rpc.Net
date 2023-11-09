@@ -8,6 +8,9 @@ namespace RavenCoin.Rpc.Requests.BlockchainRequests
 {
     public class GetBlockCountRequest : JsonRpcRequest
     {
+        /// <summary>
+        /// Returns the number of blocks in the longest blockchain.
+        /// </summary>
         public GetBlockCountRequest()
         {
             Id = 1;
